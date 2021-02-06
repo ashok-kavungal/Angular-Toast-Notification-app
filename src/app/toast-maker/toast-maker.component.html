@@ -1,19 +1,35 @@
-<div class="input-group input-group-sm mb-3">
+<form [formGroup]="toastForm">
+  <div class="input-group input-group-sm mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-sm"> Toast Heading</span>
+      <span class="input-group-text" 
+      id="inputGroup-sizing-sm">
+       Toast Heading</span>
     </div>
-    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="text" class="form-control"
+    formControlName="heading" aria-label="Small"
+    aria-describedby="inputGroup-sizing-sm">
 </div>
 <div class="input-group input-group-sm mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="inputGroup-sizing-sm"> Toast Message</span>
+      <span class="input-group-text"
+      id="inputGroup-sizing-sm"
+      >
+      Toast Message</span>
     </div>
-    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    <input type="text" class="form-control"
+    formControlName="message"
+    aria-label="Small"
+    aria-describedby="inputGroup-sizing-sm"
+    placeholder="(Optional)">
 </div>
 
-<button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-danger"> Error </button>
+<button (click)="onSubmit('Success')" [disabled]="!toastForm.valid"  class="btn btn-success" >Success</button>
+<button  (click)="onSubmit('Warning')" [disabled]="!toastForm.valid" class="btn btn-warning">Warning</button>
+<button (click)="onSubmit('Error')"  [disabled]="!toastForm.valid" class="btn btn-danger"> Error </button>
+</form>
+
+
+
   
 
 

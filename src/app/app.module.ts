@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastMakerComponent } from './toast-maker/toast-maker.component';
 import { ToastModule } from 'src/shared/toast/toast.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ToastModule } from 'src/shared/toast/toast.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ToastModule
+    ToastModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
