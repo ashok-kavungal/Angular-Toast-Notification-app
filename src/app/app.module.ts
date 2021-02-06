@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ButtonComponent } from './button/button.component';
+import { ToastMakerComponent } from './toast-maker/toast-maker.component';
 import { ToastModule } from 'src/shared/toast/toast.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ToastMakerComponent
   ],
   imports: [
     BrowserModule,
