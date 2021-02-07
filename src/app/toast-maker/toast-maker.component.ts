@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { toastTypes } from '../../shared/toast/toast.model';
+
+import { Toast, toastTypes } from '../../shared/toast/toast.model';
+import * as ToastActions from '../../shared/toast/store/toast.actions';
+import * as fromApp from '../store/app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-toast-maker',
@@ -10,7 +14,7 @@ import { toastTypes } from '../../shared/toast/toast.model';
 export class ToastMakerComponent implements OnInit {
 
  public toastForm! : FormGroup
- constructor() { }
+ constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.toastForm = new FormGroup({
@@ -19,10 +23,18 @@ export class ToastMakerComponent implements OnInit {
     })
   }
 
-  onSubmit(type : toastTypes): void{
-    let heading = this.toastForm.value.heading;
-    let message = this.toastForm.value.message;
-    let toastType = type;
+  onSubmit(toastType : toastTypes): void{
+    const heading = this.toastForm.value.heading;
+    const message = this.toastForm.value.message;
+  
+    const newToast = new Toast(
+                heading,
+                message,
+                toastType,
+                new Date().getTime()
+              );
+    console.log(newToast)
+    this.store.dispatch(new ToastActions.AddToast(newToast));          
   }
 
 }

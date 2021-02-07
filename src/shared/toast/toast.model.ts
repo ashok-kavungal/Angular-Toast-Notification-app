@@ -5,6 +5,7 @@ export class Toast{
     constructor(
         public heading:string,
         public message: string | null,
-        public type : toastTypes
+        public type : toastTypes,
+        public createdAt : number,
     ){}
 }

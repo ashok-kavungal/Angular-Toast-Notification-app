@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { ToastMakerComponent } from './toast-maker/toast-maker.component';
 import { ToastModule } from 'src/shared/toast/toast.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import * as fromApp from './store/app.reducer';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     ToastModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]
