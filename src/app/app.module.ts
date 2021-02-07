@@ -10,6 +10,8 @@ import { ToastMakerComponent } from './toast-maker/toast-maker.component';
 import { ToastModule } from 'src/shared/toast/toast.module';
 import * as fromApp from './store/app.reducer';
 import { environment } from 'src/environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { ToastEffects } from 'src/shared/toast/store/toast.effects';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { environment } from 'src/environments/environment';
     ToastModule,
     ReactiveFormsModule,
     StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([ToastEffects]),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
   ],
   providers: [],

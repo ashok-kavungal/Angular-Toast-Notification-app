@@ -1,9 +1,19 @@
-<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
-    <!-- Position it -->
-    <div style="position: absolute; top: 0; right: 0;">
-  
-      <!-- Then put toasts within -->
-
-      <app-toast></app-toast>
+<div aria-live="polite" 
+     aria-atomic="true"
+     style="position: relative; height: 100%;">
+    <div 
+    style="position: absolute;"
+    [ngClass]="{
+      'top-right': position === 'top-right',
+      'top-left': position === 'top-left',
+      'bottom-right': position === 'bottom-right',
+      'bottom-left': position === 'bottom-left'
+     }"
+    >
+      <app-toast
+      *ngFor="let toast of toastList;"
+      [toast] = "toast"
+      >
+      </app-toast>
     </div>
-  </div>
+</div>

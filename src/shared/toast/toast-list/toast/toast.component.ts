@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Toast } from '../../toast.model';
 
 @Component({
   selector: 'app-toast',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
 
+  @Input()toast!: Toast;
   constructor() { }
 
   ngOnInit(): void {

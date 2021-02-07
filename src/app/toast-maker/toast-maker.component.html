@@ -14,14 +14,26 @@
       <span class="input-group-text"
       id="inputGroup-sizing-sm"
       >
-      Toast Message</span>
+      Toast SubHeading</span>
     </div>
     <input type="text" class="form-control"
-    formControlName="message"
+    formControlName="subheading"
     aria-label="Small"
     aria-describedby="inputGroup-sizing-sm"
     placeholder="(Optional)">
 </div>
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text"
+    id="inputGroup-sizing-sm"
+    >
+    Toast Message</span>
+  </div>
+  <input type="text" class="form-control"
+  formControlName="message"
+  aria-label="Small"
+  aria-describedby="inputGroup-sizing-sm">
+ </div>
 
 <button (click)="onSubmit('Success')" [disabled]="!toastForm.valid"  class="btn btn-success" >Success</button>
 <button  (click)="onSubmit('Warning')" [disabled]="!toastForm.valid" class="btn btn-warning">Warning</button>

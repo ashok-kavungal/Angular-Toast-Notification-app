@@ -1,6 +1,14 @@
-<app-toast-list></app-toast-list>
-<div class="mx-auto" style="width: 600px;">
-    <h1>Create a new toast here :</h1>
-    <app-toast-maker></app-toast-maker>
-</div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" style="background-color: red;">
+            <p>Create a new toast here :</p>
+            <app-toast-maker></app-toast-maker>
+        </div>  
+       <div class="col-md-8" style="background-color: green;height: 100vh">
+        <app-toast-list
+                [timeout] ="8"
+                [position] ="'bottom-left'"
+        ></app-toast-list>
+       </div>
+    </div>
+  </div>

@@ -19,22 +19,26 @@ export class ToastMakerComponent implements OnInit {
   ngOnInit(): void {
     this.toastForm = new FormGroup({
       'heading' :new FormControl(null,[Validators.required]),
-      'message' :new FormControl(null),
+      'subheading' :new FormControl(null),
+      'message' :new FormControl(null,[Validators.required]),
     })
   }
 
   onSubmit(toastType : toastTypes): void{
     const heading = this.toastForm.value.heading;
+    const subheading = this.toastForm.value.subheading;
     const message = this.toastForm.value.message;
-  
+ 
     const newToast = new Toast(
                 heading,
+                subheading,
                 message,
                 toastType,
                 new Date().getTime()
               );
     console.log(newToast)
-    this.store.dispatch(new ToastActions.AddToast(newToast));          
+    this.store.dispatch(new ToastActions.AddtoastStart(newToast)); 
+    this.toastForm.reset()         
   }
 
 }
