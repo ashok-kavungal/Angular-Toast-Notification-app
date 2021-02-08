@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Toast } from '../../toast.model';
 
 @Component({
@@ -6,12 +6,17 @@ import { Toast } from '../../toast.model';
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.css']
 })
-export class ToastComponent implements OnInit {
+export class ToastComponent implements OnInit,OnChanges{
 
   @Input()toast!: Toast;
+  @Input()toastIndex!: number;
+  toastbufferFull: boolean = false;
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  ngOnChanges():void{
+    this.toastbufferFull = this.toastIndex > 4;
   }
+
 
 }

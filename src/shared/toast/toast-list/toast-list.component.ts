@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -13,11 +13,15 @@ import * as ToastActions from '../store/toast.actions';
   templateUrl: './toast-list.component.html',
   styleUrls: ['./toast-list.component.css']
 })
-export class ToastListComponent implements OnInit,OnDestroy {
+export class ToastListComponent implements OnInit,OnDestroy{
   
-  toastList!:Toast[];
+  toastList:Toast[] = [];
+  toastOverflowList! : Toast[]
   @Input() timeout: number = 5;
   @Input() position: toastPositon = 'top-right';
+
+  toastOverflow: boolean = false;
+
   private toastListSub !: Subscription;
 
   constructor( private store: Store<fromApp.AppState>) { }
@@ -29,10 +33,12 @@ export class ToastListComponent implements OnInit,OnDestroy {
     .subscribe(
       (toastList : Toast[])=>{
         this.toastList = toastList;
-        console.log('toastlist changed and length is :' +this.toastList.length)
-        console.log(this.toastList)
-        console.log(this.position)
-
+        this.toastOverflow = this.toastList.length > 4;
+        if(this.toastOverflow){ 
+          this.toastOverflowList = toastList.slice(4);
+        }else{
+          this.toastOverflowList = [];
+        }  
       }
     )
     this.store.dispatch(new ToastActions.SettoastTimeout(this.timeout));

@@ -1,19 +1,23 @@
-<div aria-live="polite" 
-     aria-atomic="true"
-     style="position: relative; height: 100%;">
-    <div 
-    style="position: absolute;"
-    [ngClass]="{
-      'top-right': position === 'top-right',
-      'top-left': position === 'top-left',
-      'bottom-right': position === 'bottom-right',
-      'bottom-left': position === 'bottom-left'
-     }"
-    >
+<div aria-live="polite" aria-atomic="true" style="position: relative; height: 100%;">
+    <div style="position: absolute;" [ngClass]="{
+ 'top-right': position === 'top-right',
+ 'top-left': position === 'top-left',
+ 'bottom-right': position === 'bottom-right',
+ 'bottom-left': position === 'bottom-left'
+}">
       <app-toast
-      *ngFor="let toast of toastList;"
-      [toast] = "toast"
-      >
+       *ngFor="let toast of toastList;
+               let i = index;"
+               [toast]="toast"
+               [toastIndex]="i">
+              >
       </app-toast>
+      <div *ngIf="toastOverflow">
+        <div class="toast-header">
+          <strong class="mr-auto">New Notifications</strong>
+          <span class="badge badge-light">{{toastOverflowList.length}}</span>
+        </div>
+      </div>
     </div>
 </div>
+
