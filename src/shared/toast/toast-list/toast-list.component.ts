@@ -3,10 +3,10 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
-
 import { Toast, toastPositon } from '../toast.model';
 import * as fromApp from '../../../app/store/app.reducer';
-import * as ToastActions from '../store/toast.actions';
+import { ToastRemoveService } from '../toast-remove.service';
+
 
 @Component({
   selector: 'app-toast-list',
@@ -24,7 +24,8 @@ export class ToastListComponent implements OnInit,OnDestroy{
 
   private toastListSub !: Subscription;
 
-  constructor( private store: Store<fromApp.AppState>) { }
+  constructor( private store: Store<fromApp.AppState>,
+               private timoutService: ToastRemoveService ) { }
 
   ngOnInit(): void{
     this.toastListSub = this.store
@@ -41,7 +42,7 @@ export class ToastListComponent implements OnInit,OnDestroy{
         }  
       }
     )
-    this.store.dispatch(new ToastActions.SettoastTimeout(this.timeout));
+    this.timoutService.setTimoutValue(this.timeout);
   }
 
   ngOnDestroy():void{
