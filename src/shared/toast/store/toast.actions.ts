@@ -25,12 +25,12 @@ export class AddtoastSuccess implements Action {
 
 export class RemovetoastStart implements Action{
     readonly type = REMOVE_TOAST_START;
-    constructor(public payload: number){}
+    constructor(public payload: Toast){}
 }
 
 export class RemovetoastSuccess implements Action{
     readonly type = REMOVE_TOAST_SUCCESS;
-    constructor(public payload: number){}
+    constructor(public payload: Toast){}
 }
 
 export type ToastActions =

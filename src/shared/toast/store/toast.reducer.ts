@@ -31,7 +31,7 @@ export function toastReducer(
             return {
                 ...state,
                 toastList : state.toastList.filter((toasts)=>{
-                    return toasts.createdAt !== action.payload;
+                    return toasts.createdAt !== action.payload.createdAt;
                 })
             }    
         default:
