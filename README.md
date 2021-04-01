@@ -1,6 +1,6 @@
 # Toastapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+A simple Angular based challenge to mock creation of toast notification. The angular toast module implented in this application can be easily integrated to other modules and can be used to generate and customize creation and positoning of toast notifications. 
 
 ## Development server
 
